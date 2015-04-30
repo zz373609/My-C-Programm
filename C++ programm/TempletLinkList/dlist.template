@@ -1,0 +1,189 @@
+//***************************
+//Name: Zhiqiang Zhang
+//Date: 7/27/2013
+//Class:CS2401
+//E-mail:zz373609@ohio.edu
+//Description: colorful program
+//***************************
+#include<iostream>
+#include"dlist.h"
+using namespace std;
+
+//constructor
+template <class T>
+dlist<T>::dlist(){
+head = NULL;
+tail = NULL;
+used = 0;
+}
+
+//destructor
+template <class T>
+dlist<T>::~dlist(){
+dnode<T>* rm;
+	while(head != NULL){
+	rm = head;
+	head = head->next_link();
+	delete rm;
+	}
+}
+
+//copy constructor
+template <class T>
+dlist<T>::dlist(const dlist<T>& other){
+dnode<T>* cursor = other.head;
+head=tail=new dnode<T>(cursor->data());
+while(cursor->next_link()!=NULL){
+tail->set_next_link(new dnode<T>(cursor->next_link()->data(),tail,NULL));
+tail = tail->next_link();
+cursor=cursor->next_link();
+}
+}
+
+//asssgment operator
+template <class T>
+void dlist<T>::operator = (const dlist<T>*& other){
+if(*this == other)
+return this;
+else{
+dnode<T>* rm;
+	while(head != NULL){
+	rm = head;
+	head = head->next_link();
+	delete rm;
+	}
+}
+dnode<T>* cursor = other.head;
+head=tail=new dnode<T>(cursor->data());
+while(cursor->next_link()!=NULL){
+tail->set_next_link(new dnode<T>(cursor->next_link()->data(),tail,NULL));
+tail = tail->next_link();
+cursor=cursor->next_link();
+}
+}
+
+//insert color from front
+template <class T>
+void dlist<T>::dlist_insert_front(T& entry){
+dnode<T>* temp = new dnode<T>;
+if(head == NULL && tail == NULL){
+head = temp;
+tail = temp;
+head->set_data(entry);
+}
+else{
+temp->set_data(entry);
+head->set_previous_link(temp);
+temp->set_next_link(head);
+temp->set_previous_link(NULL);
+head = temp;
+}
+used++;
+}
+
+//insert color from back
+template <class T>
+void dlist<T>::dlist_insert_back(T& entry){
+dnode<T>* temp = new dnode<T>;
+if(head == NULL && tail == NULL){
+head = temp;
+tail = temp;
+tail->set_data(entry);
+}
+else{
+temp->set_data(entry);
+tail->set_next_link(temp);
+temp->set_previous_link(tail);
+tail = temp;
+temp->set_next_link(NULL);
+}
+++used;
+}
+
+//insert color by iterator, and insert color before it
+template <class T>
+void dlist<T>::dlist_insert_before(iterator it, T& entry){
+dnode<T>* cursor = it.get_it();
+if(cursor==head&&cursor==NULL){
+dnode<T>* temp = new dnode<T>;
+head = temp;
+tail = temp;
+head->set_data(entry);
+}
+else if(cursor==head)
+dlist_insert_front(entry);
+else if(cursor->previous_link()!=NULL){
+dnode<T>* temp = new dnode<T>(entry,cursor->previous_link(),cursor);
+(cursor->previous_link())->set_next_link(temp);
+cursor->set_previous_link(temp);
+}
+used++;
+}
+
+//insert color by iterator, and insert color after it
+template <class T>
+void dlist<T>::dlist_insert_after(iterator it, T& entry){
+dnode<T>* cursor = it.get_it();
+if(cursor==head&&cursor==NULL){
+dnode<T>* temp = new dnode<T>;
+head = temp;
+tail = temp;
+head->set_data(entry);
+}
+else if(cursor==tail)
+dlist_insert_back(entry);
+else if(cursor->next_link()!=NULL){
+dnode<T>* temp = new dnode<T>(entry,cursor,cursor->next_link());
+(cursor->next_link())->set_previous_link(temp);
+cursor->set_next_link(temp);
+}
+used++;
+}
+
+//remove color from front
+template <class T>
+void dlist<T>::dlist_remove_front(){
+dnode<T>* rm = head;
+head=head->next_link();
+head->set_previous_link(NULL);
+delete rm;
+}
+
+//remove color from back
+template <class T>
+void dlist<T>::dlist_remove_back(){
+dnode<T>* rm = tail;
+tail=tail->previous_link();
+tail->set_next_link(NULL);
+delete rm;
+}
+
+//remove color with current iterator
+template <class T>
+void dlist<T>::dlist_remove_it(iterator it){
+dnode<T>* cursor = it.get_it();
+if(cursor==NULL)
+return;
+else if(cursor==head){
+head = head->next_link();
+head->set_previous_link(NULL);
+delete cursor;
+}
+else if(cursor==tail){
+tail = tail->previous_link();
+tail->set_next_link(NULL);
+delete cursor;
+}
+else{
+dnode<T>*temp1;
+dnode<T>*temp2;
+temp1 = cursor->previous_link();
+temp2 = cursor->next_link();
+temp1->set_next_link(temp2);
+temp2->set_previous_link(temp1);
+delete cursor;
+}
+}
+
+
+

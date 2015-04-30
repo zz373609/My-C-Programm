@@ -1,0 +1,1 @@
+(MAJORITY (AND 3 4) (OR 1 2 3) (NOT 5) 4)

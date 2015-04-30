@@ -1,0 +1,2 @@
+clang: error: no such file or directory: 'calc.yy.cc'
+make: *** [default] Error 1

@@ -1,0 +1,11 @@
+(MAJORITY (AND (MAJORITY 1 2 3 ) (OR 4 5 6 ) (MAJORITY 2 3 4 ) ) (OR 7 8 9 ) (NOT 7 ) (NOT (MAJORITY 7 (AND 10 15 17 ) (OR 16 9 3 ) ) ) 7 9 (AND (MAJORITY 5 7 8 ) (MAJORITY 2 3 5 7 9 ) ) )
+Largest Input # = 17
+Height = 4
+Number of MAJORITY GATES 6
+Number of AND GATES 3
+Number of OR GATES 3
+Number of NOT GATES 2
+On all trues, this evaluates to true
+On all falses, this evaluates to false
+When only the odd values are true, this evaluates to true
+

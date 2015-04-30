@@ -1,0 +1,77 @@
+Script started on Sun Oct 19 16:15:27 2014
+p1% bash
+
+bash-3.2$ ls
+
+ans1       ex.pl      pro1.pl    pro1ch.pl
+
+bash-3.2$ pl
+
+Welcome to SWI-Prolog (Version 3.1.2)
+
+Copyright (c) 1993-1998 University of Amsterdam.  All rights reserved.
+
+
+
+For help, use ?- help(Topic). or ?- apropos(Word).
+
+
+
+1 ?- [pro1ch].
+
+
+pro1ch compiled, 0.00 sec, 17,824 bytes.
+
+
+
+Yes
+
+2 ?- advise.
+
+what is your income monthly/lees_10/10/20/more?/k
+
+|: 20.
+
+
+
+
+
+Do want good barnd? yes/no
+
+|: yes.
+
+
+
+
+
+Do you want powerful engine? yes/no
+
+|: yes.
+
+
+
+
+
+Would you like to save money about gasoline? yes/no
+
+|: yes.
+
+
+
+
+
+What purpose you car use for? family, pesonal,speed,other
+
+|: family.
+
+
+
+
+
+You might enjoy the following cars: 
+
+mercedes_benz_g65_mg
+
+
+
+Yes

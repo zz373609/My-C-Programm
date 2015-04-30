@@ -1,0 +1,10 @@
+Zhiqiang Zhang
+CS4040
+
+Dynamic problem:
+	To compile programm: g++ Dynamic.cc, g++ proj1.cc
+	To run the programm: a.out file.txt
+	
+There are two different way to write, one I used the infinity. One Dynamic.cc I did not used the infinity. However, the one
+I did not use infinity with special case when i or j == 0 has different path in input2.txt. Others are same.In addition,
+the proj1.cc is exactly right.

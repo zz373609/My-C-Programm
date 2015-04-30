@@ -1,0 +1,6 @@
+1+1*3;
+uno times 42;
+what is 2 + 3;
+two times 三;
+二 加 三;
+the square root of five thousand two hundred and sixty five plus forty two times the square root of seven times three;
